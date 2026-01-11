@@ -1,0 +1,9 @@
+venv/
+*.pyc
+logs/
+target/
+dbt_packages/
+dbt_modules/
+profiles.yml
+secrets/
+.DS_Store

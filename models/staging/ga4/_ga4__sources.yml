@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: ga4
+    description: "Raw GA4 event data from the Google Merchandise Store (Obfuscated)"
+    database: bigquery-public-data  
+    schema: ga4_obfuscated_sample_ecommerce
+    loader: "GA4 Export"
+    tables:
+      - name: events
+        description: "Partitioned events table. Contains nested event_params."
+        # This allows you to query the wildcard table (events_*) as one table
+        identifier: "events_*"
+        
+        
+        # Warn if data hasn't arrived in 24 hours (simulating a live pipeline)
+        config:
+          freshness:
+            # Since this is static data from 2021, we set this to a huge number
+            # In a real job, you would set this to 24 hours
+            warn_after: {count: 2000, period: day}
+            
+        loaded_at_field: "PARSE_TIMESTAMP('%Y%m%d', _TABLE_SUFFIX)"
