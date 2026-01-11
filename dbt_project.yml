@@ -31,16 +31,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   ga4_pipeline:
-    # Default to views (saves money/storage)
-    +materialized: view
-    
-    staging:
+    # Config indicated by + and applies to all files under models/example/
+    example:
       +materialized: view
-      +schema: staging
-      
-    intermediate:
-      +materialized: ephemeral # Logic only, no table created
-      
-    marts:
-      +materialized: table # Final BI tables
-      +schema: marts
