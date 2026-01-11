@@ -19,5 +19,5 @@ sources:
             # Since this is static data from 2021, we set this to a huge number
             # In a real job, you would set this to 24 hours
             warn_after: {count: 2000, period: day}
-            
-        loaded_at_field: "PARSE_TIMESTAMP('%Y%m%d', _TABLE_SUFFIX)"
+
+          loaded_at_field: "PARSE_TIMESTAMP('%Y%m%d', _TABLE_SUFFIX)"
